@@ -53,9 +53,11 @@ def generate(min_length=12, max_length=14, readability=False):
         secondWord = None
 
         while firstWord == None or secondWord == None:
-            firstWord = words.get_random_word(hasDictionaryDef="true", minLength=firstNum, maxLength=firstNum)
-            secondWord = words.get_random_word(hasDictionaryDef="true", minLength=secondNum, maxLength=secondNum)
+            firstWord = words.get_random_word(hasDictionaryDef="true", minLength=firstNum, maxLength=firstNum, includePartOfSpeech='verb')
+            secondWord = words.get_random_word(hasDictionaryDef="true", minLength=secondNum, maxLength=secondNum, includePartOfSpeech='noun')
 
+        print(f'First word: {firstWord}')
+        print(f'Second word: {secondWord}')
         # newFirst = ''
         # newSecond = ''
 
