@@ -1,3 +1,13 @@
+from boyer import clear
 from tools import generate
-password = generate(readability=True)
-print(password)
+
+clear()
+
+print('Readability:')
+for i in range(5):	
+	print(generate(readability=True))
+
+print('\nNormal:')
+for i in range(5):	
+	print(generate(readability=False))
+print('\n')

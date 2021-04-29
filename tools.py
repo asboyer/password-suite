@@ -56,22 +56,22 @@ def generate(min_length=12, max_length=14, readability=False):
             firstWord = words.get_random_word(hasDictionaryDef="true", minLength=firstNum, maxLength=firstNum)
             secondWord = words.get_random_word(hasDictionaryDef="true", minLength=secondNum, maxLength=secondNum)
 
-        newFirst = ''
-        newSecond = ''
+        # newFirst = ''
+        # newSecond = ''
 
-        for char in firstWord:
-            cap = randint(0, 1)
-            if cap == 0:
-                newFirst += char
-            else:
-                newFirst += char.upper()
+        # for char in firstWord:
+        #     cap = randint(0, 1)
+        #     if cap == 0:
+        #         newFirst += char
+        #     else:
+        #         newFirst += char.upper()
 
-        for char in secondWord:
-            cap = randint(0, 1)
-            if cap == 0:
-                newSecond += char
-            else:
-                newSecond += char.upper()
+        # for char in secondWord:
+        #     cap = randint(0, 1)
+        #     if cap == 0:
+        #         newSecond += char
+        #     else:
+        #         newSecond += char.upper()
 
         for char in numsIn:
             password.append(char)
@@ -79,8 +79,11 @@ def generate(min_length=12, max_length=14, readability=False):
         for char in specialsIn:
             password.append(char)
 
-        password.append(newFirst)
-        password.append(newSecond)
+        # password.append(newFirst)
+        # password.append(newSecond)
+
+        password.append(firstWord)
+        password.append(secondWord)
 
         
         shuffle(password)
