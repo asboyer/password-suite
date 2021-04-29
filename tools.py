@@ -1,4 +1,4 @@
-from random import randint
+from random import randint, shuffle
 from random_word import RandomWords
 
 
@@ -56,10 +56,6 @@ def generate(min_length=12, max_length=14, readability=False):
             firstWord = words.get_random_word(hasDictionaryDef="true", minLength=firstNum, maxLength=firstNum)
             secondWord = words.get_random_word(hasDictionaryDef="true", minLength=secondNum, maxLength=secondNum)
 
-
-        print(firstWord, firstNum, len(firstWord))
-        print(secondWord, secondNum, len(secondWord))
-
         newFirst = ''
         newSecond = ''
 
@@ -77,10 +73,23 @@ def generate(min_length=12, max_length=14, readability=False):
             else:
                 newSecond += char.upper()
 
-        password = [numsIn, specialsIn, newFirst, newSecond]
+        for char in numsIn:
+            password.append(char)
 
-        print(password)
+        for char in specialsIn:
+            password.append(char)
 
+        password.append(newFirst)
+        password.append(newSecond)
+
+        
+        shuffle(password)
+
+        finalPass = ''
+        for st in password:
+            finalPass += st
+
+        return finalPass
 
     if not readability:
         password = ''
