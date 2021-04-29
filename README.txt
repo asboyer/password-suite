@@ -1,4 +1,1 @@
-more tools coming soon...
-
-- password generator
-- password manager
+tools are in the works 
