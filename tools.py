@@ -36,7 +36,7 @@ def generate(min_length=12, max_length=14, readability=False):
         numSpecials = randint(1, length/(length/2))
         numNums = randint(1, length/(length/2))
 
-        remainingLength = length - numSpeicals - numNums
+        remainingLength = length - numSpecials - numNums
 
         specialsIn = ''
         numsIn = ''
@@ -46,30 +46,40 @@ def generate(min_length=12, max_length=14, readability=False):
         for i in range(numSpecials):
             specialsIn += choice(special)
 
-        firstNum = randint(2, remainingLength)
+        firstNum = randint(2, remainingLength - 3)
         secondNum = remainingLength - firstNum
 
-        firstWord = words.get_random_word(hasDictionaryDef="true", minLength=firstNum, maxLength=firstNum)
-        secondWord = words.get_random_word(hasDictionaryDef="true", minLength=secondNum, maxLength=secondNum)
+        firstWord = None
+        secondWord = None
+
+        while firstWord == None or secondWord == None:
+            firstWord = words.get_random_word(hasDictionaryDef="true", minLength=firstNum, maxLength=firstNum)
+            secondWord = words.get_random_word(hasDictionaryDef="true", minLength=secondNum, maxLength=secondNum)
+
+
+        print(firstWord, firstNum, len(firstWord))
+        print(secondWord, secondNum, len(secondWord))
 
         newFirst = ''
         newSecond = ''
 
-        for char in newFirst:
+        for char in firstWord:
             cap = randint(0, 1)
             if cap == 0:
                 newFirst += char
             else:
                 newFirst += char.upper()
 
-        for char in newFirst:
+        for char in secondWord:
             cap = randint(0, 1)
             if cap == 0:
-                newFirst += char
+                newSecond += char
             else:
-                newFirst += char.upper()
+                newSecond += char.upper()
 
-        password = [numsIn, specialsIn]
+        password = [numsIn, specialsIn, newFirst, newSecond]
+
+        print(password)
 
 
     if not readability:

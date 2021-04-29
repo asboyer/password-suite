@@ -1,3 +1,4 @@
 from tools import generate
-password = generate()
-print(password)
+for i in range(100):	
+	password = generate(readability=True)
+# print(password)
