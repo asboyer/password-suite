@@ -1,7 +1,6 @@
 from random import randint
 from random_word import RandomWords
 
-
 # words
 words = RandomWords()
 
@@ -30,12 +29,23 @@ def shuffle(l):
         l.remove(c)
     return l2
 
+def memify(text):
+    new = []
+    for i in text:
+        r = randint(0, 1)
+        if r == 1:
+            new.append(i.upper())
+        else:
+            new.append(i.lower())
+    new = ''.join(new)
+    return new
+
 def generate(min_length=12, max_length=14, readability=False):
     
     # goal - generate a password with words, mixed in with a few special chars + nums
 
     length = randint(min_length, max_length)
-    
+
     if readability:
         # nums -
         # special - 
@@ -43,9 +53,8 @@ def generate(min_length=12, max_length=14, readability=False):
         # uppercase
 
         password = []
-
-        numSpecials = randint(1, 3) 
-        numNums = randint(1, 2)
+        numSpecials = randint(1, int(length / 10) * 2) 
+        numNums = randint(1, int(length / 10) * 2)
 
         remainingLength = length - numSpecials - numNums
 
@@ -67,27 +76,24 @@ def generate(min_length=12, max_length=14, readability=False):
             firstWord = words.get_random_word(hasDictionaryDef="true", minLength=firstLen, maxLength=firstLen)
             secondWord = words.get_random_word(hasDictionaryDef="true", minLength=secondLen, maxLength=secondLen)
 
-        print(f'First word: {firstWord}')
-        print(f'Second word: {secondWord}')
-
         newFirst = ''
         newSecond = ''
 
 
         # make a memify
-        for char in firstWord:
-            cap = randint(0, 1)
-            if cap == 0:
-                newFirst += char
-            else:
-                newFirst += char.upper()
+        # for char in firstWord:
+        #     cap = randint(0, 1)
+        #     if cap == 0:
+        #         newFirst += char
+        #     else:
+        #         newFirst += char.upper()
 
-        for char in secondWord:
-            cap = randint(0, 1)
-            if cap == 0:
-                secondFi += char
-            else:
-                newFirst += char.upper()
+        # for char in secondWord:
+        #     cap = randint(0, 1)
+        #     if cap == 0:
+        #         secondFi += char
+        #     else:
+        #         newFirst += char.upper()
 
         for char in numsIn + specialsIn: # 
             password.append(char)
@@ -95,11 +101,7 @@ def generate(min_length=12, max_length=14, readability=False):
         password.append(firstWord)
         password.append(secondWord)
 
-        print(f'Before shuffling: {password}')
-        
         password = shuffle(password)
-
-        print(f'After shuffling: {password}')
 
         finalPass = ''
         for st in password:
