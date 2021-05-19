@@ -83,8 +83,8 @@ dictionary = {
 
 x = dictionary.keys()
 
-for i in x:
-    print(i)
+# for i in x:
+#     print(i)
 
 
 stars = {
@@ -92,15 +92,44 @@ stars = {
         "lightsaber-color": "red",
         "side": "sith",
         "movies": [1, 2, 3, 4, 5, 6]
-    }
+    },
     "Darth Vader": {
         "lightsaber-color": "red",
         "side": "sith",
         "movies": [1, 2, 3, 4, 5, 6]
-    }
+    },
     "Darth Vader": {
         "lightsaber-color": "red",
         "side": "sith",
         "movies": [1, 2, 3, 4, 5, 6]
     }
 }
+
+car = {
+"brand": "Ford",
+"model": "Mustang",
+"year": 1964
+}
+
+x = car.items()
+
+x = car.values()
+
+car["new"] = True
+
+car.update({"year": 2020})
+
+print(car)
+
+car.pop("new")
+
+del car["year"]
+
+# print(car)
+
+# car.clear()
+
+print(car)
+
+for x, y in car.items():
+    print(x, y)
