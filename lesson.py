@@ -133,3 +133,5 @@ print(car)
 
 for x, y in car.items():
     print(x, y)
+
+car1 = car # car1 will only be a reference to car, changes made in car1 will affect car
