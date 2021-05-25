@@ -111,6 +111,9 @@ car = {
 "year": 1964
 }
 
+
+
+
 x = car.items()
 
 x = car.values()
